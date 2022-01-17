@@ -9,7 +9,7 @@
     <!-- Bootstrap & CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="assets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -22,48 +22,49 @@
         </div>
     </header>
     <main class="container-fluid">
-        <div class="row"></div>
-        <section class="col-12 col-md-4 col-lg-3">
-            <div class="card">
-                <h3 class="card-header">
-                    Instructions
-                </h3>
-                <div class="card-body">
-                    <p class="card-text">
-                        Click the button and log the following information to add a project to the tracker
-                    </p>
+        <div class="row">
+            <section class="col-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <h3 class="card-header">
+                        Instructions
+                    </h3>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Click the button and log the following information to add a project to the tracker
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Project Name</li>
+                        <li class="list-group-item">Project Type</li>
+                        <li class="list-group-item">Hourly Rate</li>
+                        <li class="list-group-item">Due Date</li>
+                    </ul>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#project-modal">
+                            Add Project
+                        </button>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Project Name</li>
-                    <li class="list-group-item">Project Type</li>
-                    <li class="list-group-item">Hourly Rate</li>
-                    <li class="list-group-item">Due Date</li>
-                </ul>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#project-modal">
-                        Add Project
-                    </button>
+            </section>
+            <section class="col-12 col-md-8 col-lg-9">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope='col'>Project Name</th>
+                                <th scope='col'>Project Type</th>
+                                <th scope='col'>Hourly Rate ($)</th>
+                                <th scope='col'>Due Date</th>
+                                <th scope='col'>Days until due date</th>
+                                <th scope='col'>Potential Total Earnings ($)</th>
+                                <th scope='col'></th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-display"></tbody>
+                    </table>
                 </div>
-            </div>
-        </section>
-        <section class="col-12 col-md-8 col-lg-9">
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope='col'>Project Name</th>
-                            <th scope='col'>Project Type</th>
-                            <th scope='col'>Hourly Rate ($)</th>
-                            <th scope='col'>Due Date</th>
-                            <th scope='col'>Days until due date</th>
-                            <th scope='col'>Potential Total Earnings ($)</th>
-                            <th scope='col'></th>
-                        </tr>
-                    </thead>
-                    <tbody id="project-display"></tbody>
-                </table>
-            </div>
-        </section>
+            </section>
+        </div>
 
     </main>
 
@@ -99,32 +100,29 @@
                         </div>
                         <div class="form-group">
                             <label for="hourly-rate-input">Hourly Rate ($)</label>
-                            <input type="number" class="form-control" id="hourly-rate-input"
-                                placeholder="$" min="0" required>
+                            <input type="number" class="form-control" id="hourly-rate-input" placeholder="$" min="0"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="due-date-input">Due Date</label>
-                            <input type="text" min='1' id="due-date-input" class="form-control" placeholder="When is the project due?"
-                              required />
-                          </div>
+                            <input type="text" min='1' id="due-date-input" class="form-control"
+                                placeholder="When is the project due?" required />
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit Project</button>
+                        <button type="submit" class="btn btn-primary">Submit Project</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="assets/js/script.js"></script>
-
 </body>
 
 </html>
