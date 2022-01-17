@@ -1,14 +1,16 @@
 // When a user opens site they should see ticking clock, date and table header with card on right hand side with an input and button
 var timer = $("#dateTime")
-// Time shows hh mm ss and date shows day month and year
-setInterval(function() {
-    var timeDate = moment().format("HH:mm:ss, Do MMMM YYYY")
-    timer.text(timeDate)
-}, 1000)
-
 
 // When page loads time starts 
 // timer is element that updates every second
+function startTimer() {
+    setInterval(function() {
+        var timeDate = moment().format("HH:mm:ss, Do MMMM YYYY")
+        timer.text(timeDate)
+    }, 1000)    
+}
+
+startTimer()
 
 // Card has instructions on info needed and a button. only button on first page
 
