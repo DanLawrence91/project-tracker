@@ -21,43 +21,43 @@ function startTimer() {
 
 startTimer()
 
-function init() {
-    var data = JSON.parse(localStorage.getItem('project-data'));
-    // for (const key in data) {
-    //     console.log(`${key}: ${data[key]}`)
-    // }
+// function init() {
+//     var data = JSON.parse(localStorage.getItem('project-data')) || [];
+//     // for (const key in data) {
+//     //     console.log(`${key}: ${data[key]}`)
+//     // }
 
-    console.log(data.name)
+//     console.log(data.name)
 
-    var projectRow = $("<tr>").addClass('pRow');
-    var projectNameData = $("<td>").addClass('p-2').text(data.name)
-    var projectTypeData = $("<td>").addClass('p-2').text(data.type)
-    var hourlyRateData = $("<td>").addClass('p-2').text(data.rate)
-    var projectDueData = $("<td>").addClass('p-2').text(data.due)
-    var daysLeft = $("<td>").addClass('p-2').text(data.daysleft)
-    var potentialEarnings = $("<td>").addClass('p-2').text(data.earnings)
-    var deleteRow = $("<td>").addClass("BTN-delete-project text-center p-2").text("X")
+//     var projectRow = $("<tr>").addClass('pRow');
+//     var projectNameData = $("<td>").addClass('p-2').text(data.name)
+//     var projectTypeData = $("<td>").addClass('p-2').text(data.type)
+//     var hourlyRateData = $("<td>").addClass('p-2').text(data.rate)
+//     var projectDueData = $("<td>").addClass('p-2').text(data.due)
+//     var daysLeft = $("<td>").addClass('p-2').text(data.daysleft)
+//     var potentialEarnings = $("<td>").addClass('p-2').text(data.earnings)
+//     var deleteRow = $("<td>").addClass("BTN-delete-project text-center p-2").text("X")
     
-    projectRow.append(
-        projectNameData,
-        projectTypeData,
-        hourlyRateData,
-        projectDueData,
-        daysLeft,
-        potentialEarnings,
-        deleteRow
-    );
+//     projectRow.append(
+//         projectNameData,
+//         projectTypeData,
+//         hourlyRateData,
+//         projectDueData,
+//         daysLeft,
+//         potentialEarnings,
+//         deleteRow
+//     );
 
-    projectDisplay.append(projectRow);
+//     projectDisplay.append(projectRow);
     
-}
+// }
 
 // When data added to modal create rows in table based on this info
 function createRow (pName, pType, pRate, pDate,) {
     var projectRow = $("<tr>").addClass('pRow');
     var projectNameData = $("<td>").addClass('p-2').text(pName)
     var projectTypeData = $("<td>").addClass('p-2').text(pType)
-    var hourlyRateData = $("<td>").addClass('p-2').text(pRate)
+    var hourlyRateData = $("<td>").addClass('p-2').text("$" + pRate)
     var projectDueData = $("<td>").addClass('p-2').text(pDate)
 
     // works out how many days until project due
@@ -121,7 +121,10 @@ function handleFormSubmission(event) {
         earnings: totalEarnings
     }
 
-    localStorage.setItem('project-data', JSON.stringify(data))
+    var displayData = [];
+    displayData.push(data)
+
+    localStorage.setItem('project-data', JSON.stringify(displayData))
     
 }
 
@@ -130,5 +133,5 @@ projectForm.on("submit", handleFormSubmission)
 projectDisplay.on("click", ".BTN-delete-project", handleRemoveItem)
 // calendar to pick due date from
 dueDate.datepicker({ minDate: 1 });
-init()
+// init()
 
