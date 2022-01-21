@@ -1,3 +1,8 @@
 .BTN-delete-project {
     cursor: pointer;
 }
+
+.custom-jumbotron {
+    background-color: navy;
+    color: oldlace;
+}
